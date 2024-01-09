@@ -22,6 +22,7 @@ alias vi="nvim"
 alias rrm="trash-put"
 alias te="vcgencmd measure_temp"
 alias e="exit"
+alias ks="cd ~/kernel_study"
 
 #unzip 한글 깨짐 방지
 export UNZIP="-O cp949"
