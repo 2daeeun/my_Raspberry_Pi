@@ -6,6 +6,7 @@ sudo apt install -y aria2 curl wget             # Command-line download utility
 sudo apt install -y ack-grep                    # grep alternater
 sudo apt install -y neofetch                    # Show system information
 sudo apt install -y terminator                  # Terminator
+sudo apt install -y code                        # vscode
 sudo apt install -y htop                        # Task manager
 sudo apt install -y neovim                      # NeoVim
 sudo apt install -y trash-cli                   # trash-cli
@@ -41,7 +42,13 @@ sudo ln -sf ~/my_Raspberry_Pi/root/.config/nvim /root/.config/
 sudo ln -sf ~/my_Raspberry_Pi/htop.sh ~/Desktop/
 
 # ----- 마무리 -----
-sudo apt-get purge nano -y
 sudo apt-get update
+sudo apt-get purge nano -y
+sudo apt-get purge "chromium-*" -y
+sudo apt-get purge scratch -y
+sudo apt-get purge 'vlc-*' -y
+sudo apt-get purge libreoffice -y
+sudo apt-get purge 'libreoffice-*' -y
+sudo apt-get purge minecraft-pi -y
 sudo apt autoremove -y
 sudo apt autoclean -y
