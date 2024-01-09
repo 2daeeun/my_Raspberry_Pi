@@ -40,6 +40,19 @@ Plug 'vim-airline/vim-airline-themes'               "airline 테마
 " Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}      " Or build from source code by use yarn: https://yarnpkg.com
 " Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }    "파이썬 자동 완성
 " Plug 'yaegassy/coc-pydocstring', {'do': 'yarn install --frozen-lockfile'}                               "coc-pydocstring
+
+" Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/vim-lsp'
+" Plug 'ycm-core/YouCompleteMe'
+
+
+Plug 'vim-scripts/delimitMate.vim'                 "괄호 자동완성 플러그인
+Plug 'Shougo/neco-syntax'                           "vim 구문 파일을 통한 자동완성
+Plug 'Shougo/deoplete-clangx'                       "c/c++ 자동완성
+Plug 'deoplete-plugins/deoplete-jedi'               "python 자동완성
+Plug 'Shougo/neco-vim'                              "CoC로 코드 자동완성
+Plug 'davidhalter/jedi-vim'                         "자동완성 라이브러리
+
 Plug 'davidhalter/jedi-vim'                         "파이썬 자동완성
 Plug 'vim-scripts/indentLine.vim'                   "들여쓰기 안내선
 Plug 'jiangmiao/auto-pairs'                         "대괄호, 괄호, 따옴표 등을 쌍으로 삽입하거나 삭제.
@@ -80,25 +93,20 @@ Plug 'pboettch/vim-cmake-syntax'                    "syntax highlighting CMake
 call plug#end()
 
 
-"-----플러그인 설치를 위한 설정-----
-" if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-"   silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-"      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"   autocmd VimEnter * PlugInstall --sync | source ~/.config/nvim/init.vim
-" endif
-
-"-----CoC 설정-----
-"inoremap <silent><expr> <TAB>
-"      \ coc#pum#visible() ? coc#pum#next(1) :
-"      \ CheckBackspace() ? "\<Tab>" :
-"      \ coc#refresh()
-"inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-"inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-"                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-"function! CheckBackspace() abort
-"  let col = col('.') - 1
-"  return !col || getline('.')[col - 1]  =~# '\s'
-"endfunction
+if executable('clangd')
+    augroup lsp_clangd
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'clangd',
+                    \ 'cmd': {server_info->['clangd']},
+                    \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+                    \ })
+        autocmd FileType c setlocal omnifunc=lsp#complete
+        autocmd FileType cpp setlocal omnifunc=lsp#complete
+        autocmd FileType objc setlocal omnifunc=lsp#complete
+        autocmd FileType objcpp setlocal omnifunc=lsp#complete
+    augroup end
+endif
 
 "----- Onedakr colorscheme 설정 -----                          
 colorscheme onedark
@@ -112,15 +120,6 @@ let g:airline#extensions#tabline#enabled = 1              " vim-airline 버퍼 �
 let g:airline#extensions#tabline#fnamemod = ':t'          " vim-airline 버퍼 목록 파일명만 출력
 let g:airline#extensions#tabline#buffer_nr_show = 1       " buffer number를 보여준다
 let g:airline#extensions#tabline#buffer_nr_format = '%s:' " buffer number format
-
-"----- Doxygen -----
-"let g:DoxygenToolkit_briefTag_pre="@brief 간략한 설명"
-"let g:DoxygenToolkit_paramTag_pre="@param 파라미터 설명"
-"let g:DoxygenToolkit_returnTag="@return  반환형 설명"
-"let g:DoxygenToolkit_blockHeader="-------------------------------"
-"let g:DoxygenToolkit_blockFooter="---------------------------------"
-"let g:DoxygenToolkit_authorName="이대은(Dae-eun Lee)"
-"let g:DoxygenToolkit_licenseTag="https://github.com/2daeeun"
 
 "----- Nerd Tree -----
 let NERDTreeWinPos = "left"
