@@ -14,8 +14,11 @@ sudo apt install -y openjdk-17-jdk              # JDK 17
 sudo apt install -y build-essential gcc g++     # C/C++ 컴파일러 & 기본 라이브러리
 sudo apt install -y make cmake                  # C/C++ 컴파일러 & 기본 라이브러리
 sudo apt install -y libc6-dev libncurses5-dev   # C 라이브러리
+sudo apt install -y libssl-dev                  # OpenSSL 개발 패키지 라이브러리
 # sudo apt install -y moreutis                    # Collection of the unix tools(errno 사용하기 위해 설치)
 # sudo apt install -y ccls                        # C/C++/Objective-C 언어 서버
+sudo apt install -y bison flex                  # 문법 분석기, 텍스트 처리기 (커널 빌드 할 때 필요)
+sudo apt install -y bc                          # CLI 기반 계산기 (커널 빌드 할 때 필요)
 sudo apt install -y exuberant-ctags             # ctag
 sudo apt install -y cscope                                  # cscope
 sudo apt install -y clang clang-format                      # clang
@@ -32,6 +35,7 @@ sudo rm -rf ~/.config/nvim
 sudo rm -rf ~/.p10k.zsh
 sudo rm -rf ~/.zshrc
 sudo rm -rf /root/.bashrc
+sudo mkdir /root/.config
 sudo rm -rf /root/.config/nvim
 
 sudo ln -sf ~/my_Raspberry_Pi/home/.config/nvim ~/.config/
