@@ -35,78 +35,29 @@ Plug 'joshdick/onedark.vim'                         "onedark 테마
 Plug 'vim-airline/vim-airline'                      "airline(vi 하단하고 상단 꾸밈)              
 Plug 'vim-airline/vim-airline-themes'               "airline 테마
 " -----자동완성-----
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}     "Use release branch
-" Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}             " Or latest tag
-" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}      " Or build from source code by use yarn: https://yarnpkg.com
-" Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }    "파이썬 자동 완성
-" Plug 'yaegassy/coc-pydocstring', {'do': 'yarn install --frozen-lockfile'}                               "coc-pydocstring
-
-" Plug 'prabirshrestha/async.vim'
-" Plug 'prabirshrestha/vim-lsp'
-" Plug 'ycm-core/YouCompleteMe'
-
-
-Plug 'vim-scripts/delimitMate.vim'                 "괄호 자동완성 플러그인
+Plug 'vim-scripts/delimitMate.vim'                  "괄호 자동완성 플러그인
 Plug 'Shougo/neco-syntax'                           "vim 구문 파일을 통한 자동완성
 Plug 'Shougo/deoplete-clangx'                       "c/c++ 자동완성
-Plug 'deoplete-plugins/deoplete-jedi'               "python 자동완성
 Plug 'Shougo/neco-vim'                              "CoC로 코드 자동완성
 Plug 'davidhalter/jedi-vim'                         "자동완성 라이브러리
-
-Plug 'davidhalter/jedi-vim'                         "파이썬 자동완성
 Plug 'vim-scripts/indentLine.vim'                   "들여쓰기 안내선
 Plug 'jiangmiao/auto-pairs'                         "대괄호, 괄호, 따옴표 등을 쌍으로 삽입하거나 삭제.
 Plug 'scrooloose/nerdcommenter'                     "주석 처리
-" Plug 'chrisbra/vim-commentary'
 " -----NERDTree-----
 Plug 'scrooloose/nerdtree'                          "NERDTree 설치
 Plug 'jistr/vim-nerdtree-tabs'                      "NERDTree Tabs 설치
 Plug 'ryanoasis/vim-devicons'                       "NERDTree에 예쁜 아이콘을 붙여주는 플러그인,nerd font 설치 필요함
-" -----HTML/CSS/JavaScript-----
-"Plug 'mattn/emmet-vim'  							"html:5 를 입력 후 ctrl y 를 누른 뒤 ,를 누르면 html폼이 완성되는 플러그인
-"Plug 'ap/vim-css-color'                            "css 소스코딩 하는 동안 색상들을 미리 보는 것
-"Plug 'ying17zi/vim-live-latex-preview'             "vim-live-latex-previe
 " -----태그생성-----
-"Plug 'preservim/tagbar'                             "현재 파일내의 class, struct, prototype, typedef, macro 등을 요약하여 표시한다.
-"Plug 'vim-scripts/taglist.vim'                      "taglist
-"Plug 'xolox/vim-easytags'                           "ctags를 쉽게 쓸 수 있게 해주는 easytags플러그인
-"Plug 'xolox/vim-misc'
-"Plug 'ronakg/quickr-cscope.vim'                     "cscope를 vim에서 편하게 쓸 수 있도록 도와주는 quickr-cscope.vim 플러그인
+Plug 'preservim/tagbar'                             "현재 파일내의 class, struct, prototype, typedef, macro 등을 요약하여 표시한다.
+Plug 'vim-scripts/taglist.vim'                      "taglist
+Plug 'xolox/vim-easytags'                           "ctags를 쉽게 쓸 수 있게 해주는 easytags플러그인
+Plug 'xolox/vim-misc'
+Plug 'ronakg/quickr-cscope.vim'                     "cscope를 vim에서 편하게 쓸 수 있도록 도와주는 quickr-cscope.vim 플러그인
 " -----개발 보조 플러그인 -----
-"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }     "Markdown Preview
-"Plug 'wakatime/vim-wakatime'                        "wakatime
-"Plug 'vim-scripts/DoxygenToolkit.vim'               "Doxygen
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'bfrg/vim-cpp-modern'                          "Extended Vim syntax highlighting for C/C++
 Plug 'rhysd/vim-clang-format'                       "clang-format (base is vjj
 Plug 'pboettch/vim-cmake-syntax'                    "syntax highlighting CMake
-" Plug 'justmao945/vim-clang'
-" Plug 'mhartington/formatter.nvim'                   "clang-format (base is Lua)
-" -----Git-----
-"Plug 'tpope/vim-fugitive'
-"Plug 'rbong/vim-flog'
-" -----유용하지만 사용 안하는 플러그인-----
-"Plug 'tpope/vim-fugitive'                          "git과 함께 쓰면 좋은 것
-"ctrlp.vim                                          "vim내에서 파일을 쉽게 검색해서 해당 파일을 열게 해주는 플러그인
-"Plug 'anyakichi/vim-surround'                      "수동 괄호 감싸기
-"Plug 'mhinz/vim-startify'                          "Vim 및 Neovim의 시작 화면을 제공
 call plug#end()
-
-
-if executable('clangd')
-    augroup lsp_clangd
-        autocmd!
-        autocmd User lsp_setup call lsp#register_server({
-                    \ 'name': 'clangd',
-                    \ 'cmd': {server_info->['clangd']},
-                    \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-                    \ })
-        autocmd FileType c setlocal omnifunc=lsp#complete
-        autocmd FileType cpp setlocal omnifunc=lsp#complete
-        autocmd FileType objc setlocal omnifunc=lsp#complete
-        autocmd FileType objcpp setlocal omnifunc=lsp#complete
-    augroup end
-endif
 
 "----- Onedakr colorscheme 설정 -----                          
 colorscheme onedark
@@ -125,9 +76,6 @@ let g:airline#extensions#tabline#buffer_nr_format = '%s:' " buffer number format
 let NERDTreeWinPos = "left"
 nmap <F7> :NERDTree<CR>
 nnoremap <leader>r :NERDTreeFind<CR>
-
-"----- Emmet 자동완성 단축키 -----
-" let g:user_emmet_leader_key=','
 
 "----- Indent Guides(들여쓰기 안내선) -----
 let g:indentLine_char = '┆'
