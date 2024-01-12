@@ -36,10 +36,8 @@ Plug 'vim-airline/vim-airline'                      "airline(vi 하단하고 상
 Plug 'vim-airline/vim-airline-themes'               "airline 테마
 " -----자동완성-----
 Plug 'vim-scripts/delimitMate.vim'                  "괄호 자동완성 플러그인
-Plug 'Shougo/neco-syntax'                           "vim 구문 파일을 통한 자동완성
-Plug 'Shougo/deoplete-clangx'                       "c/c++ 자동완성
-Plug 'Shougo/neco-vim'                              "CoC로 코드 자동완성
-Plug 'davidhalter/jedi-vim'                         "자동완성 라이브러리
+Plug 'Rip-Rip/clang_complete'                       "C/C++ 코드 완성을 위해 clang을 사용하는 Vim 플러그인
+Plug 'Shougo/deoplete.nvim'                         "비동기 자동 완성 프레임워크
 Plug 'vim-scripts/indentLine.vim'                   "들여쓰기 안내선
 Plug 'jiangmiao/auto-pairs'                         "대괄호, 괄호, 따옴표 등을 쌍으로 삽입하거나 삭제.
 Plug 'scrooloose/nerdcommenter'                     "주석 처리
@@ -74,7 +72,7 @@ let g:airline#extensions#tabline#buffer_nr_format = '%s:' " buffer number format
 
 "----- Nerd Tree -----
 let NERDTreeWinPos = "left"
-nmap <F7> :NERDTree<CR>
+nmap <F7> :NERDTreeToggle<CR>
 nnoremap <leader>r :NERDTreeFind<CR>
 
 "----- Indent Guides(들여쓰기 안내선) -----
@@ -136,4 +134,10 @@ autocmd FileType c nnoremap <F9> :w <bar> exec '!gcc -g -o '.shellescape('%:r').
 autocmd FileType cpp nnoremap <F9> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
 autocmd FileType java nnoremap <buffer> <F9> :exec '!javac' shellescape(expand('%'), 1) '&& java' shellescape(expand('%:r'), 1)<CR>
 
-"이거 복사 붙여넣기 끝난 뒤에는 nvim에서 source % 하고 PlugInstall 하고 UpdateRemotePlugins 입력하기(플러그인 삭제는 PlugClean)
+" provide path directly to the library file
+let g:clang_library_path='/usr/lib/llvm-11/lib/libclang-11.so.1'
+
+" Deoplete 설정
+let g:deoplete#enable_at_startup = 1
+
+" 이거 복사 붙여넣기 끝난 뒤에는 nvim에서 source % 하고 PlugInstall 하고 UpdateRemotePlugins 입력하기(플러그인 삭제는 PlugClean)
