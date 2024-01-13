@@ -22,8 +22,8 @@ set nobackup                                        "vim에서 백업 파일 안
 set smartindent                                     "스마트한 들여 쓰기 사용
 set autoindent                                      "자동 들여 쓰기를 사용
 set cindent                                         "C언어 자동 들여 쓰기
-set tabstop=4                                       "탭을 4칸으로
-set shiftwidth=4                                    ">> 또는 << 키로 들여 쓰기 할때 스페이스의 갯수. 기본값 8
+set tabstop=2                                       "탭을 4칸으로
+set shiftwidth=2                                    ">> 또는 << 키로 들여 쓰기 할때 스페이스의 갯수. 기본값 8
 set expandtab                                       "탭을 스페이스로 바꾸기
 set langmap=ㅁa,ㅠb,ㅊc,ㅇd,ㄷe,ㄹf,ㅎg,ㅗh,ㅑi,ㅓj,ㅏk,ㅣl,ㅡm,ㅜn,ㅐo,ㅔp,ㅂq,ㄱr,ㄴs,ㅅt,ㅕu,ㅍv,ㅈw,ㅌx,ㅛy,ㅋz
 
