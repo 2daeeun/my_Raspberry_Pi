@@ -1,6 +1,7 @@
 "==========기본 설정값==========
 set syntax=on			                            "구문강조
-set tags=./tags,tags,../tags,/usr/tags              " 자신의 디렉토리 및 상위 디렉토리 경로
+" set tags=/home/ilove/kernel_study/linux/tags              " 자신의 디렉토리 및 상위 디렉토리 경로
+set tags=./tags,../tags,../../tags,../../../tags              " 자신의 디렉토리 및 상위 디렉토리 경로
 set encoding=UTF-8		                            "한글 깨짐 방지 
 set fileencodings=utf-8,euc-kr,cp949                "한글 사용
 set termguicolors		                            "트루 컬러 지원
@@ -137,7 +138,10 @@ autocmd FileType java nnoremap <buffer> <F9> :exec '!javac' shellescape(expand('
 " provide path directly to the library file
 let g:clang_library_path='/usr/lib/llvm-11/lib/libclang-11.so.1'
 
-" Deoplete 설정
+" Deoplete 설정 (자동완성 설정)
 let g:deoplete#enable_at_startup = 1
+
+" ClangFormat 설정
+autocmd FileType c ClangFormatAutoEnable
 
 " 이거 복사 붙여넣기 끝난 뒤에는 nvim에서 source % 하고 PlugInstall 하고 UpdateRemotePlugins 입력하기(플러그인 삭제는 PlugClean)
