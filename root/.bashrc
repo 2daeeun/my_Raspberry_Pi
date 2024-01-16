@@ -114,4 +114,5 @@ fi
 
 alias e="exit"
 alias l="ls -al"
+alias ks="cd /home/ilove/kernel_study"
 alias rrm="trash-put"
