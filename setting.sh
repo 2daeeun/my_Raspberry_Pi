@@ -26,6 +26,7 @@ sudo apt install -y python3-dev python3-pip python3-venv    # python
 sudo apt install -y gdb                                     # 디버거 
 sudo apt install -y fuse libfuse2                           # FUSE (Filesystem in Userspace) 
 sudo apt install -y tldr                        # tldr
+tldr --update                                   # tldr update
 sudo apt install -y man-db                      # The online manual database.
 sudo apt install -y manpages-dev                # Manual pages about using GNU/Linux for development
 sudo apt install -y glibc-doc                   # GNU C Library: Documentation
