@@ -6,7 +6,6 @@ sudo apt install -y aria2 curl wget             # Command-line download utility
 sudo apt install -y ack-grep                    # grep alternater
 sudo apt install -y neofetch                    # Show system information
 sudo apt install -y terminator                  # Terminator
-sudo apt install -y code                        # vscode
 sudo apt install -y htop                        # Task manager
 sudo apt install -y neovim                      # NeoVim
 sudo apt install -y trash-cli                   # trash-cli
